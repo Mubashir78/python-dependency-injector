@@ -7,6 +7,14 @@ that were made in every particular version.
 From version 0.7.6 *Dependency Injector* framework strictly
 follows `Semantic versioning`_
 
+4.49.1
+------
+
+- Fix sync resource shutdown with async deps.
+- Add support for wiring of Cython-compiled modules. Thanks to `@keyz182 <https://github.com/keyz182>`_ for `#965 <https://github.com/ets-labs/python-dependency-injector/pull/965`_.
+- Allow Configuration provider to accept Pydantic settings classes. Thanks to `@warmagedon007 <https://github.com/warmagedon007>`_ for `#963 <https://github.com/ets-labs/python-dependency-injector/pull/963`_.
+- Add FastStream example to docs. Thanks to `@birthdaysgift <https://github.com/birthdaysgift>`_ for `#958 <https://github.com/ets-labs/python-dependency-injector/pull/958`_.
+
 4.49.0
 ------
 
