@@ -468,15 +468,10 @@ cdef class Provider:
 cdef class Object(Provider):
     """Object provider returns provided instance "as is".
 
-    .. py:attribute:: provides
-
-        Value that have to be provided.
-
-        :type: object
+    :param provides: Value to be provided.
     """
 
     def __init__(self, provides=None):
-        """Initialize provider."""
         self._provides = None
         self.set_provides(provides)
         super(Object, self).__init__()
@@ -591,15 +586,11 @@ cdef class Self(Provider):
 cdef class Delegate(Provider):
     """Delegate provider returns provider "as is".
 
-    .. py:attribute:: provides
-
-        Value that have to be provided.
-
-        :type: object
+    :param provides: Provider to be returned as is.
+    :type provides: Provider | None
     """
 
     def __init__(self, provides=None):
-        """Initialize provider."""
         self._provides = None
         self.set_provides(provides)
         super(Delegate, self).__init__()
@@ -1410,19 +1401,11 @@ cdef class AbstractCallable(Callable):
 cdef class CallableDelegate(Delegate):
     """Callable delegate injects delegating callable "as is".
 
-    .. py:attribute:: provides
-
-        Value that have to be provided.
-
-        :type: object
+    :param callable: :class:`Callable` provider to be returned as is.
+    :type callable: Callable
     """
 
     def __init__(self, callable):
-        """Initializer.
-
-        :param callable: Value that have to be provided.
-        :type callable: object
-        """
         if isinstance(callable, Callable) is False:
             raise Error("{0} can wrap only {1} providers".format(self.__class__, Callable))
         super(CallableDelegate, self).__init__(callable)
@@ -1517,19 +1500,11 @@ cdef class AbstractCoroutine(Coroutine):
 cdef class CoroutineDelegate(Delegate):
     """Coroutine delegate injects delegating coroutine "as is".
 
-    .. py:attribute:: provides
-
-        Value that have to be provided.
-
-        :type: object
+    :param coroutine: :class:`Coroutine` provider to be returned as is.
+    :type coroutine: Coroutine
     """
 
     def __init__(self, coroutine):
-        """Initializer.
-
-        :param coroutine: Value that have to be provided.
-        :type coroutine: object
-        """
         if isinstance(coroutine, Coroutine) is False:
             raise Error("{0} can wrap only {1} providers".format(self.__class__, Callable))
         super(CoroutineDelegate, self).__init__(coroutine)
@@ -2741,19 +2716,11 @@ cdef class AbstractFactory(Factory):
 cdef class FactoryDelegate(Delegate):
     """Factory delegate injects delegating factory "as is".
 
-    .. py:attribute:: provides
-
-        Value that have to be provided.
-
-        :type: object
+    :param factory: :class:`Factory` provider to be returned as is.
+    :type factory: Factory
     """
 
     def __init__(self, factory):
-        """Initializer.
-
-        :param factory: Value that have to be provided.
-        :type factory: object
-        """
         if isinstance(factory, Factory) is False:
             raise Error("{0} can wrap only {1} providers".format(self.__class__, Factory))
         super(FactoryDelegate, self).__init__(factory)
@@ -3363,19 +3330,11 @@ cdef class AbstractSingleton(BaseSingleton):
 cdef class SingletonDelegate(Delegate):
     """Singleton delegate injects delegating singleton "as is".
 
-    .. py:attribute:: provides
-
-        Value that have to be provided.
-
-        :type: object
+    :param singleton: :class:`Singleton` provider to be returned as is.
+    :type singleton: BaseSingleton
     """
 
     def __init__(self, singleton):
-        """Initializer.
-
-        :param singleton: Value that have to be provided.
-        :type singleton: py:class:`BaseSingleton`
-        """
         if isinstance(singleton, BaseSingleton) is False:
             raise Error("{0} can wrap only {1} providers".format(
                 self.__class__, BaseSingleton))
